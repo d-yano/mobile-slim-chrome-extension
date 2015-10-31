@@ -2,7 +2,7 @@ $(function () {
 	setInterval(function () {
 		$.getJSON("http://192.168.1.1/cgi-bin/webmain.cgi?act=summary", function (data) {
 			level = calc_signal_level(data.wimax.status.link.RSSI, data.wimax.status.link.CINR);
-			// chrome.browserAction.setBadgeText({ text: level + "/5" });
+			chrome.browserAction.setBadgeText({ text: data.wifi.station.COUNT });
 			chrome.browserAction.setIcon({ path:"images/"+level+".png"});
 		});
     }, 5000);
